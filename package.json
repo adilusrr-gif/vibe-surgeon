@@ -1,0 +1,43 @@
+{
+  "name": "vibe-surgeon",
+  "version": "0.2.0",
+  "description": "A local safety layer for AI-coded repositories: health scan, dependency blast radius, MCP tools and GitHub SARIF.",
+  "type": "module",
+  "bin": {
+    "vibe-surgeon": "./bin/vibe-surgeon.mjs",
+    "vsurgeon": "./bin/vibe-surgeon.mjs"
+  },
+  "scripts": {
+    "test": "node --test",
+    "smoke": "node ./bin/vibe-surgeon.mjs scan . --json > /tmp/vibe-scan.json && node ./bin/vibe-surgeon.mjs map . --json > /tmp/vibe-map.json && node ./bin/vibe-surgeon.mjs context . && node ./bin/vibe-surgeon.mjs sarif .",
+    "check": "npm test && npm run smoke"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "vibe-coding",
+    "ai-coding",
+    "claude-code",
+    "codex",
+    "cursor",
+    "mcp",
+    "developer-tools",
+    "code-quality",
+    "static-analysis",
+    "agent",
+    "sarif"
+  ],
+  "license": "MIT",
+  "files": [
+    "bin",
+    "src",
+    "templates",
+    "assets",
+    "docs",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "SECURITY.md"
+  ]
+}
