@@ -1,7 +1,6 @@
 name: AI coding failure mode
-about: Report a real repository failure Vibe Surgeon should detect or prevent
+description: Report a real repository failure Vibe Surgeon should detect or prevent
 title: "[failure-mode] "
-labels: ["failure-mode"]
 body:
   - type: markdown
     attributes:

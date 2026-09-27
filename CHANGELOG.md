@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.1
+
+- Fixed fail-open Git diff handling; comparison failures now produce an explicit error.
+- Preserved whitespace and Unicode filenames with NUL-delimited Git output.
+- Added a reproducible synthetic demo, release tarball workflow and first-run feedback form.
+- Replaced unpublished npm quickstarts with source/release installation instructions.
+- Added Russian introduction and a launch kit with explicit product limitations.
+
 ## 0.2.0
 
 - Added MCP stdio server with five repository-safety tools.

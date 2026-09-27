@@ -3,3 +3,6 @@ node_modules/
 .vibe-surgeon/map.json
 .vibe-surgeon/results.sarif
 .vibe-surgeon/report.html
+
+.vibe-surgeon/demo/
+*.tgz

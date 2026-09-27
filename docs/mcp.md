@@ -1,19 +1,20 @@
 # MCP integration
 
-Vibe Surgeon can run as a local MCP server over stdio. It intentionally has zero runtime dependencies.
+Use a reviewed local checkout, not an unpublished npm package:
 
 ```bash
-npx -y vibe-surgeon@latest mcp .
+node /absolute/path/to/vibe-surgeon/bin/vibe-surgeon.mjs mcp /absolute/path/to/your-repository
 ```
 
-Available tools:
+The server offers `vibe_scan`, `vibe_map`, `vibe_guard`, `vibe_context` and
+`vibe_blast_radius`. See the [generic configuration](../templates/mcp/server.json).
+Replace both absolute paths; host-specific configuration wrappers can differ.
 
-| Tool | Purpose |
-|---|---|
-| `vibe_scan` | Repository health and risk scan |
-| `vibe_map` | Local dependency graph and hotspots |
-| `vibe_guard` | Git diff risk and blast radius |
-| `vibe_context` | Compact generated context for a coding agent |
-| `vibe_blast_radius` | Impact analysis for an explicit list of changed files |
+The bundled tests exercise the stdio handshake and tool listing. They do not
+certify compatibility with every release of every coding-agent host.
 
-A generic MCP client configuration is available at [`templates/mcp/server.json`](../templates/mcp/server.json). Host products may use a different configuration file location or wrapper format.
+The server has the filesystem permissions of its process. **It is not a sandbox**;
+only connect trusted local clients. `vibe_context` writes a context file. A client
+can send returned source-derived information to its own model/provider even
+though Vibe Surgeon itself makes no LLM API calls. Connecting MCP does not force
+an agent to run checks or obey warnings.

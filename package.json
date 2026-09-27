@@ -1,7 +1,7 @@
 {
   "name": "vibe-surgeon",
-  "version": "0.2.0",
-  "description": "A local safety layer for AI-coded repositories: health scan, dependency blast radius, MCP tools and GitHub SARIF.",
+  "version": "0.2.1",
+  "description": "Local review signals for AI-assisted code: dependency impact, Git change guard, MCP and SARIF.",
   "type": "module",
   "bin": {
     "vibe-surgeon": "./bin/vibe-surgeon.mjs",
@@ -10,7 +10,8 @@
   "scripts": {
     "test": "node --test",
     "smoke": "node ./bin/vibe-surgeon.mjs scan . --json > /tmp/vibe-scan.json && node ./bin/vibe-surgeon.mjs map . --json > /tmp/vibe-map.json && node ./bin/vibe-surgeon.mjs context . && node ./bin/vibe-surgeon.mjs sarif .",
-    "check": "npm test && npm run smoke"
+    "check": "npm test && npm run smoke",
+    "demo": "node scripts/demo.mjs"
   },
   "engines": {
     "node": ">=20"
@@ -38,6 +39,15 @@
     "README.md",
     "LICENSE",
     "CHANGELOG.md",
-    "SECURITY.md"
-  ]
+    "SECURITY.md",
+    "scripts/demo.mjs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adilusrr-gif/vibe-surgeon.git"
+  },
+  "bugs": {
+    "url": "https://github.com/adilusrr-gif/vibe-surgeon/issues"
+  },
+  "homepage": "https://github.com/adilusrr-gif/vibe-surgeon#readme"
 }

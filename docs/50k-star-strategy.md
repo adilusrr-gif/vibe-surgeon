@@ -1,113 +1,37 @@
-# 50k-star strategy
+# A path toward broad adoption, not a star promise
 
-50,000 stars is a distribution outcome, not an engineering acceptance criterion. The product has to earn repeat use first.
+50,000 stars is an aspiration, not an engineering acceptance criterion or a
+forecast. No probability or deadline is claimed.
 
-## Positioning
+## First prove usefulness
 
-Do not position Vibe Surgeon as another coding agent.
+Start with small JS/TS repositories and a repeatable review hint. Track voluntary
+reports of one useful finding, one false positive and one miss. Favor fixes that
+reduce noise over a larger feature list. A self-assigned health score is not proof.
 
-Position it as the **safety layer underneath every coding agent**:
+## Then reduce adoption friction
 
-> Your AI writes fast. Vibe Surgeon keeps the repo safe to change.
+Keep installation testable, the core local and the limitations obvious. Show
+reproducible evidence in README. Add integrations only when a real user needs
+them. No universal host compatibility is claimed from a single MCP handshake.
 
-The enemy is not Claude Code, Codex, Cursor or OpenCode. Those are distribution surfaces.
+## Grow through useful artifacts
 
-## The 30-second wow moment
+A public minimal reproduction, an explained fix and a clear release note give
+people something worth sharing. Community-maintained fixtures can improve the
+product. Contributions to other projects must be genuinely relevant, not ads
+filed as issues or unsolicited bulk pull requests.
 
-A user should be able to run one command in a messy repository:
+## Measures that matter
 
-```bash
-npx -y vibe-surgeon@latest all .
-```
+Voluntary repeat use, useful feedback and maintained integrations. Stars are one
+public signal, not proof of trust, revenue or saved time. This project has no
+installation/retention telemetry, so those metrics remain unknown without consent.
 
-Within seconds they should see:
+## Never do
 
-- an explainable health score;
-- secret/environment-file risk;
-- giant-file and maintenance signals;
-- dependency hotspots;
-- compact agent context;
-- a dark standalone HTML report;
-- MCP tools that the coding agent can call itself.
+Buy stars; trade votes; create fake accounts or endorsements; send mass DMs;
+claim measured savings without data; rank customer repositories without consent;
+or market a heuristic scanner as proof that AI-written code is safe.
 
-Then the second wow moment:
-
-```bash
-vibe-surgeon guard . --base origin/main
-```
-
-A tiny patch is shown to have a concrete blast radius.
-
-## Star-growth stages
-
-### 0 → 1k: prove the wedge
-
-- Launch only after the installation path works from a clean machine.
-- Publish a 20–30 second terminal GIF/video: messy repo → score → hotspot → guard.
-- Post the same demo to GitHub, Hacker News, Reddit developer communities and X/LinkedIn.
-- Ask for *failure modes*, not generic feature requests.
-- Benchmark on at least 20 public repositories and publish false-positive notes.
-
-Success signal: developers voluntarily add it to a second repository.
-
-### 1k → 10k: become part of the agent workflow
-
-- MCP integrations for major coding-agent hosts.
-- GitHub Action and SARIF.
-- PR summary bot.
-- Framework packs for Next.js, Python/FastAPI, Go and monorepos.
-- `vibe-surgeon explain <finding>` with deterministic remediation guidance.
-
-Success signal: repositories keep the tool in CI after the first week.
-
-### 10k → 25k: create a standard
-
-- Public Vibe Health benchmark.
-- Shareable score badge.
-- Community rule packs.
-- Test-impact analysis.
-- Semantic symbol graph with tree-sitter.
-- Maintainer dashboard generated from repository history.
-
-Success signal: people compare repository health using the term "Vibe Health Score" without needing an explanation.
-
-### 25k → 50k: ecosystem
-
-- VS Code/Cursor extension.
-- GitHub App for zero-config PR reviews.
-- Policy packs for teams.
-- Plugin SDK.
-- Public leaderboard for most improved repositories.
-- Optional hosted layer, while the core remains local and open source.
-
-## Viral loops
-
-1. **Shareable report:** every `report.html` can become a screenshot/post.
-2. **PR comments:** each pull request exposes Vibe Surgeon to contributors.
-3. **MCP:** agents can recommend/run the tool while working.
-4. **Badges:** maintainers display health status in README.
-5. **Failure-mode issues:** real incidents become new rules and release stories.
-
-## What will kill the project
-
-- requiring an API key for the core scan;
-- pretending regex analysis is formal verification;
-- noisy false positives;
-- building a huge hosted dashboard before the CLI is loved;
-- vendor lock-in to one coding agent;
-- adding 50 rules that nobody understands;
-- measuring success only by stars instead of repeat usage.
-
-## Core metrics
-
-Track weekly:
-
-- successful installs;
-- percentage of users who run a second command after `scan`;
-- repositories that add CI/MCP integration;
-- repeat scans after 7 and 30 days;
-- false-positive reports per 100 scans;
-- stars per launch impression;
-- contributor count and merged external PRs.
-
-Stars are a lagging indicator. Retained repositories are the leading indicator.
+[Launch experiment](launch-playbook.md) · [Prepared copy](launch-kit.md)

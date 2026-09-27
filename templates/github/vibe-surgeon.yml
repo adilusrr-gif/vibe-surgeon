@@ -1,39 +1,35 @@
 name: Vibe Surgeon
-
 on:
-  push:
-    branches: [main]
   pull_request:
-
 permissions:
   contents: read
   security-events: write
-
 jobs:
-  repository-safety:
+  review-signals:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
-
+          persist-credentials: false
       - uses: actions/setup-node@v6
         with:
           node-version: 22
           package-manager-cache: false
-
-      - name: Scan repository
-        run: npx -y vibe-surgeon@latest scan .
-
-      - name: Guard change blast radius
-        if: github.event_name == 'pull_request'
-        run: npx -y vibe-surgeon@latest guard . --base "${{ github.event.pull_request.base.sha }}"
-
+      - name: Install reviewed tool release
+        env:
+          RELEASE: https://github.com/adilusrr-gif/vibe-surgeon/releases/download/v0.2.1/vibe-surgeon-0.2.1.tgz
+        run: |
+          mkdir -p "$RUNNER_TEMP/vibe-tool"
+          npm install --prefix "$RUNNER_TEMP/vibe-tool" --ignore-scripts --no-audit --no-fund "$RELEASE"
       - name: Generate SARIF
-        run: npx -y vibe-surgeon@latest sarif . --output vibe-surgeon.sarif
-
+        run: node "$RUNNER_TEMP/vibe-tool/node_modules/vibe-surgeon/bin/vibe-surgeon.mjs" sarif . --output vibe-surgeon.sarif
+      - name: Review change impact
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: node "$RUNNER_TEMP/vibe-tool/node_modules/vibe-surgeon/bin/vibe-surgeon.mjs" guard . --base "$BASE_SHA"
       - name: Upload SARIF
-        if: always() && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.fork == false)
+        if: always() && hashFiles('vibe-surgeon.sarif') != '' && github.event.pull_request.head.repo.fork == false
         uses: github/codeql-action/upload-sarif@v4
         with:
           sarif_file: vibe-surgeon.sarif

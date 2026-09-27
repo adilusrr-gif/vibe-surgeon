@@ -33,7 +33,7 @@ const TOOLS = [
     title: 'Generate compact agent context',
     description: 'Generate compact repository context with safety rules, hotspots and current risks for a coding agent.',
     inputSchema: { type: 'object', properties: { path: { type: 'string' } }, additionalProperties: false },
-    annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: true, openWorldHint: false }
+    annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: false }
   },
   {
     name: 'vibe_blast_radius',
@@ -87,7 +87,7 @@ export function startMcpServer(rootInput = '.') {
           serverInfo: {
             name: 'vibe-surgeon',
             title: 'Vibe Surgeon',
-            version: '0.2.0',
+            version: '0.2.1',
             description: 'Repository safety tools for AI coding agents.'
           },
           instructions: 'Use vibe_scan before large changes and vibe_guard before proposing a merge.'

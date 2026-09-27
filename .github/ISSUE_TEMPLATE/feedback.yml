@@ -1,0 +1,36 @@
+name: First-run feedback
+description: Tell us whether the tool found something worth reviewing
+title: "[feedback] "
+body:
+  - type: markdown
+    attributes:
+      value: "Please use a public or sanitized example. Never paste credentials or private source code."
+  - type: input
+    id: version
+    attributes:
+      label: Version and Node version
+      placeholder: "v0.2.1, Node 22"
+    validations:
+      required: true
+  - type: input
+    id: stack
+    attributes:
+      label: Stack and optional coding agent
+  - type: textarea
+    id: outcome
+    attributes:
+      label: What did you run, and what was useful or misleading?
+    validations:
+      required: true
+  - type: dropdown
+    id: repeat
+    attributes:
+      label: Would you run it on your next change?
+      options:
+        - "Yes"
+        - "Only after a specific fix"
+        - "No"
+  - type: textarea
+    id: missing
+    attributes:
+      label: Smallest missing capability or false positive

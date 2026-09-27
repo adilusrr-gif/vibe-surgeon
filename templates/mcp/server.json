@@ -1,8 +1,12 @@
 {
   "mcpServers": {
     "vibe-surgeon": {
-      "command": "npx",
-      "args": ["-y", "vibe-surgeon@latest", "mcp", "."]
+      "command": "node",
+      "args": [
+        "/ABSOLUTE/PATH/TO/vibe-surgeon/bin/vibe-surgeon.mjs",
+        "mcp",
+        "/ABSOLUTE/PATH/TO/your-repository"
+      ]
     }
   }
 }

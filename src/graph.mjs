@@ -73,11 +73,34 @@ export function buildGraph(rootInput = '.') {
 
 export function changedFiles(rootInput = '.', base = 'HEAD~1') {
   const root = path.resolve(rootInput);
+  const options = {
+    cwd: root, encoding: 'utf8', timeout: 10_000, maxBuffer: 10 * 1024 * 1024,
+    stdio: ['ignore', 'pipe', 'pipe']
+  };
   try {
-    const out = execFileSync('git', ['diff', '--name-only', base, '--'], { cwd: root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] });
-    return out.split(/\r?\n/).map((s) => s.trim()).filter(Boolean);
-  } catch {
-    return [];
+    if (typeof base !== 'string' || !base || base.startsWith('-')) {
+      throw new Error('The base must be a Git commit reference, not an option.');
+    }
+    const top = execFileSync('git', ['rev-parse', '--show-toplevel'], options).trim();
+    if (fs.realpathSync(top) !== fs.realpathSync(root)) {
+      throw new Error('Run guard at the Git repository root.');
+    }
+    const commit = execFileSync('git', [
+      'rev-parse', '--verify', '--end-of-options', `${base}^{commit}`
+    ], options).trim();
+    const out = execFileSync('git', [
+      'diff', '--no-ext-diff', '--no-renames', '--name-only', '-z', commit, '--'
+    ], options);
+    // NUL delimiters preserve spaces, non-ASCII names and embedded newlines.
+    // This scope includes tracked staged/unstaged changes, not untracked files.
+    return out.split('\0').filter(Boolean);
+  } catch (cause) {
+    const error = new Error(
+      'Cannot determine Git changes. Run at the repository root, verify the base ref, ' +
+      'and fetch its history. No safe-change verdict was produced.', { cause }
+    );
+    error.code = 'GIT_DIFF_FAILED';
+    throw error;
   }
 }
 

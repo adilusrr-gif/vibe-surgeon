@@ -1,18 +1,16 @@
 # GitHub integration
 
-Vibe Surgeon can emit SARIF 2.1.0 so repository findings can appear in GitHub code scanning.
+The [workflow template](../templates/github/vibe-surgeon.yml) installs the versioned
+GitHub release tarball in a temporary runner directory. It does not depend
+on an npm registry publication. Review the release and its published checksum before adopting it. Version tags
+are not a guarantee of immutability. For stricter use, vendor a reviewed copy.
+Copy the template into `.github/workflows/vibe-surgeon.yml` of a target repo.
 
-```bash
-npx -y vibe-surgeon@latest sarif . --output vibe-surgeon.sarif
-```
+It generates SARIF, runs the PR change guard, and uploads SARIF where code scanning
+is available. The scanner only emits findings; `scan` does not fail on findings.
+`guard` returns 2 for high heuristic risk and 1 if Git cannot determine changes.
+Application tests remain a separate required CI step. The graph is heuristic,
+not a proof of which tests cover a change.
 
-Copy [`templates/github/vibe-surgeon.yml`](../templates/github/vibe-surgeon.yml) into `.github/workflows/vibe-surgeon.yml` in a target repository.
-
-The workflow:
-
-1. checks repository health;
-2. runs change guard on pull requests;
-3. generates SARIF;
-4. uploads findings through GitHub CodeQL's SARIF uploader.
-
-For private repositories, GitHub code-scanning availability depends on the repository's GitHub plan and security configuration.
+Code-scanning availability and write permissions depend on repository settings.
+Fork PRs do not receive a SARIF upload step in this template.

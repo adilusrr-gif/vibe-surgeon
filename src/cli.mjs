@@ -13,7 +13,7 @@ import { startMcpServer } from './mcp.mjs';
 import { ui, logo } from './ui.mjs';
 import { makeHtmlReport } from './html.mjs';
 
-const HELP = `${logo()}\n\nUsage:\n  vibe-surgeon init [path]\n  vibe-surgeon scan [path] [--json]\n  vibe-surgeon map [path] [--json]\n  vibe-surgeon context [path]\n  vibe-surgeon doctor [path]\n  vibe-surgeon guard [path] [--base <git-ref>] [--json]\n  vibe-surgeon baseline [path]\n  vibe-surgeon compare [path] [--json]\n  vibe-surgeon sarif [path] [--output <file>]\n  vibe-surgeon report [path] [--output <file>]\n  vibe-surgeon mcp [path]\n  vibe-surgeon all [path]\n\nFast path:\n  npx vibe-surgeon all .\n  npx vibe-surgeon guard . --base origin/main\n  npx vibe-surgeon mcp .\n`;
+const HELP = `${logo()}\n\nUsage:\n  vibe-surgeon init [path]\n  vibe-surgeon scan [path] [--json]\n  vibe-surgeon map [path] [--json]\n  vibe-surgeon context [path]\n  vibe-surgeon doctor [path]\n  vibe-surgeon guard [path] [--base <git-ref>] [--json]\n  vibe-surgeon baseline [path]\n  vibe-surgeon compare [path] [--json]\n  vibe-surgeon sarif [path] [--output <file>]\n  vibe-surgeon report [path] [--output <file>]\n  vibe-surgeon mcp [path]\n  vibe-surgeon all [path]\n\nFast path:\n  vibe-surgeon all .\n  vibe-surgeon guard . --base origin/main\n  vibe-surgeon mcp .\n`;
 
 function argValue(args, flag, fallback) {
   const idx = args.indexOf(flag);
