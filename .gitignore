@@ -1,0 +1,5 @@
+node_modules/
+.DS_Store
+.vibe-surgeon/map.json
+.vibe-surgeon/results.sarif
+.vibe-surgeon/report.html

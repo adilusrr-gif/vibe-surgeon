@@ -1,0 +1,30 @@
+name: AI coding failure mode
+about: Report a real repository failure Vibe Surgeon should detect or prevent
+title: "[failure-mode] "
+labels: ["failure-mode"]
+body:
+  - type: markdown
+    attributes:
+      value: "Describe the smallest reproducible failure. Please remove private code and secrets."
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What should Vibe Surgeon have warned about?
+    validations:
+      required: true
+  - type: input
+    id: agent
+    attributes:
+      label: Coding agent / IDE
+      placeholder: Claude Code, Codex, Cursor, OpenCode, etc.
+  - type: input
+    id: stack
+    attributes:
+      label: Stack
+      placeholder: Next.js, Python, Go, etc.

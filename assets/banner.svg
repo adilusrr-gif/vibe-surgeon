@@ -1,0 +1,27 @@
+<svg width="1200" height="360" viewBox="0 0 1200 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#07111F"/>
+      <stop offset="0.52" stop-color="#0B1726"/>
+      <stop offset="1" stop-color="#10101A"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="170" y1="80" x2="1030" y2="290" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#45E6FF"/>
+      <stop offset="0.5" stop-color="#7B8CFF"/>
+      <stop offset="1" stop-color="#C877FF"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="360" rx="28" fill="url(#bg)"/>
+  <circle cx="998" cy="44" r="230" fill="#5B63FF" fill-opacity="0.08"/>
+  <circle cx="190" cy="330" r="210" fill="#35D7FF" fill-opacity="0.06"/>
+  <path d="M148 180L210 118L272 180L210 242L148 180Z" stroke="url(#accent)" stroke-width="15"/>
+  <path d="M210 137V223M167 180H253" stroke="url(#accent)" stroke-width="10" stroke-linecap="round"/>
+  <path d="M148 180L210 118L272 180L210 242L148 180Z" stroke="#45E6FF" stroke-opacity="0.22" stroke-width="34" filter="url(#glow)"/>
+  <text x="330" y="154" fill="white" font-size="72" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-weight="800" letter-spacing="1">VIBE SURGEON</text>
+  <text x="333" y="205" fill="#AFC1D8" font-size="27" font-family="Inter, ui-sans-serif, system-ui, sans-serif">Repository safety for AI-written code.</text>
+  <rect x="333" y="238" width="470" height="54" rx="12" fill="#101C2B" stroke="#263B52"/>
+  <text x="357" y="273" fill="#7FE9FF" font-size="22" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace">npx vibe-surgeon all .</text>
+</svg>

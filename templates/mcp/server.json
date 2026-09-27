@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "vibe-surgeon": {
+      "command": "npx",
+      "args": ["-y", "vibe-surgeon@latest", "mcp", "."]
+    }
+  }
+}
